@@ -1,5 +1,5 @@
 import argparse, os, re, sys
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 sys.path.append('.')
 sys.path.append('/home/hyf/latent-diffusion/taming-transformers')
 import torch

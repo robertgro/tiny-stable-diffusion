@@ -8,8 +8,15 @@ To reduce the VRAM usage, the following opimizations are used:
 
 <h1 align="center">Installation</h1>
 
-Establish a virtual environment and install dependencies as referred to the official [repo](https://github.com/CompVis/stable-diffusion "repo").
-The quantized model checkpoint can be downloaded from [Google drive](https://drive.google.com/file/d/1bdsW5Bys70xt3x4DDxNKsbMkRkkKgneJ/view?usp=drive_link)
+On Windows:
+
+Establish a virtual environment and install the following dependencies:
+- Get the NVIDIA App and download the latest available driver for your hardware [https://www.nvidia.com/de-de/software/nvidia-app/](https://www.nvidia.com/de-de/software/nvidia-app/)
+- Get CUDA here [https://developer.nvidia.com/cuda-zone](https://developer.nvidia.com/cuda-zone) and make sure your GPU is supported ([https://en.wikipedia.org/wiki/CUDA#GPUs_supported](https://en.wikipedia.org/wiki/CUDA#GPUs_supported)).
+- Get the latest pytorch cuda version via pip ```pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118```
+- Install the remaining dependencies as required ```pip install setuptools omegaconf pillow einops pytorch_lightning pandas transformers taming-transformers scipy clip kornia```
+
+The quantized model checkpoint can be downloaded from [Google drive](https://drive.google.com/file/d/1bdsW5Bys70xt3x4DDxNKsbMkRkkKgneJ/view?usp=drive_link). The path to the file can be appended as argument to the command running the txt2img app.
 
 <h1 align="center">Usage</h1>
 
@@ -20,9 +27,18 @@ Only txt2img is supported now.
 
 - For example, the following command will generate 10 512x512 images:
 
-`python3 tiny_optimizedSD/tiny_txt2img.py --prompt "A peaceful lakeside cabin with a dock, surrounded by tall pine trees and a clear blue sky" --H 512 --W 512 --seed 27`
+`py tiny_optimizedSD/tiny_txt2img.py --prompt "A peaceful lakeside cabin with a dock, surrounded by tall pine trees and a clear blue sky" --H 512 --W 512 --seed 27`
+
+Full example with checkpoint file path specification:
+
+`py tiny_optimizedSD/tiny_txt2img.py --prompt "A peaceful lakeside cabin with a dock, surrounded by tall pine trees and a clear blue sky" --H 512 --W 512 --seed 27 --ckpt "C:\Python\venv\tiny-stable\tiny-stable-diffusion-main\full_int2_sd.pth"`
 
 <h1 align="center">Arguments</h1>
+
+## `--ckpt`
+
+- Specify the file path to the quantized model checkpoint file you downloaded earlier.
+- Example `--ckpt "C:\Path\To\full_int2_sd.pth` 
 
 ## `--seed`
 
